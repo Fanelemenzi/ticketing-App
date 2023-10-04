@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:ticketing_app/pages/type_of_ticket.dart';
+import 'package:ticketing_app/logics/recommended_events.dart';
+import 'package:ticketing_app/widgets/event_list.dart';
+import 'package:ticketing_app/widgets/recommendation.dart';
+import 'package:ticketing_app/widgets/type_of_ticket.dart';
 import 'package:ticketing_app/widgets/customicons.dart';
 
 
@@ -40,11 +43,36 @@ class homepage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(14),
         children: [
-            //Type of ticket
+            //types of events
             const TicketType(),
-            const SizedBox(height: 16,)
-        ],
-      ),
+            const SizedBox(height: 16,),
+            // recommended events
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Recommended For You",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              TextButton(onPressed: () {}, child: const Text("View All"))
+            ],
+          ),
+           const Recommendation(),
+           const SizedBox(height: 16,),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Nearby From You",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              TextButton(onPressed: () {}, child: const Text("View All"))
+            ],
+          ),
+          SizedBox(height: 16,),
+           const EventList()
+          ]),
+          
         bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
